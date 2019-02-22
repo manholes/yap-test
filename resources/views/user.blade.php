@@ -4,22 +4,22 @@
         <title> </title>
     </head>
     <body> 
-        
-<a href="{{ url('pdf/')  }}">download pdf</a>
 
-     @foreach ($classrooms as $classroom)<br><br>
-       Classroom {{ $classroom->name }}<br>
+        <a href="{{ url('pdf/')  }}">download pdf</a>
+
+        @foreach ($classrooms as $classroom)<br><br>
+        Classroom {{ $classroom->name }}<br>
         Teacher: 
         @foreach ($classroom->teacher as $teacher)
         {{$teacher->name}} ,
         @endforeach
         <br>  Student:
-         @foreach ($classroom->student as $teacher)
+        @foreach ($classroom->student as $teacher)
         {{$teacher->name}} ,
         @endforeach
         @endforeach
 
-         
+
         <form class="form-horizontal" method="POST" action="{{ route('teacher.store') }}"> 
             {{ csrf_field() }}
 
@@ -46,7 +46,7 @@
                     </form> 
 
                     <form class="form-horizontal"  method="POST" action="{{ route('teacher.destroy', $teacher->id)  }}"> 
-                            {{ csrf_field() }}
+                        {{ csrf_field() }}
 
                         @method('DELETE')
                         <input id="submit" type="submit"  value="DELETE"    > 
@@ -56,7 +56,7 @@
             @endforeach
 
         </table>
-        
+
 
         <br>
         <form class="form-horizontal" method="POST" action="{{ route('student.store') }}"> 
@@ -83,9 +83,9 @@
                     </form> 
 
                     <form class="form-horizontal" method="POST"  action="{{ route('student.destroy', $student->id)  }}"> 
-                           {{ csrf_field() }}
+                        {{ csrf_field() }}
 
-                        
+
                         @method('DELETE')
                         <input id="submit" type="submit"  value="DELETE"    > 
                     </form> 
@@ -122,8 +122,8 @@
                     </form> 
 
                     <form class="form-horizontal"  method="POST" action="{{ route('classroom.destroy', $classroom->id)  }}"> 
-                       {{ csrf_field() }}
-    @method('DELETE')
+                        {{ csrf_field() }}
+                        @method('DELETE')
                         <input id="submit" type="submit"  value="DELETE"    > 
                     </form> 
                 </td>

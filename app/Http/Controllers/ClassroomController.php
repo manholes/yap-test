@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Classroom;
-use App\Student;
-use App\Teacher;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller {
@@ -14,9 +12,9 @@ class ClassroomController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index() {
-        //
-		$B=3;
+        // 
     }
 
     /**
@@ -44,8 +42,8 @@ class ClassroomController extends Controller {
         $data = new Classroom();
         $data->name = $request->name;
         $data->save();
-      return redirect('home_user')->with('alert-success', 'added');
-      //  return null;
+        return redirect('home_user');
+        //  return null;
     }
 
     /**
@@ -56,7 +54,7 @@ class ClassroomController extends Controller {
      */
     public function show($id) {
         //
-        return redirect('home_user')->with('alert-success', 'deleted');
+        return redirect('home_user');
     }
 
     /**
@@ -66,12 +64,10 @@ class ClassroomController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        
+
         // 
         $data = Classroom::find($id);
         return view('Classroomedit', compact('data'));
-        
-    
     }
 
     /**
@@ -87,8 +83,8 @@ class ClassroomController extends Controller {
 
         $data->name = $request->name;
 
-$data->save();      return redirect('home_user')->with('alert-success', 'deleted');
-  
+        $data->save();
+        return redirect('home_user');
     }
 
     /**
@@ -102,16 +98,16 @@ $data->save();      return redirect('home_user')->with('alert-success', 'deleted
         $user = Classroom::find($id);
 
         $user->delete();
-        return redirect('home_user')->with('alert-success', 'deleted');
+        return redirect('home_user');
     }
-    
-      public function addclass(Request $request) {
+
+    public function addclass(Request $request) {
         //
-           $Classroom = Classroom::find($request->Classroom);
-          
-        $ModelClassroom=  Classroom::find([$request->classroom]);
-        $Classroom->classroom()->attach($ModelClassroom); 
-        return redirect('home_user')->with('alert-success', 'added');
+        $Classroom = Classroom::find($request->Classroom);
+
+        $ModelClassroom = Classroom::find([$request->classroom]);
+        $Classroom->classroom()->attach($ModelClassroom);
+        return redirect('home_user');
     }
 
 }

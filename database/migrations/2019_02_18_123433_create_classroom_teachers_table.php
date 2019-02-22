@@ -15,8 +15,9 @@ class CreateClassroomTeachersTable extends Migration
     {
         Schema::create('classroom_teacher', function (Blueprint $table) {
             $table->increments('id');
-			 $table->integer('classroom_id');
-            $table->integer('teacher_id');
+			    $table->foreign('classroom_id')->references('id')->on('classrooms');
+ 
+			    $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->timestamps();
         });
     }
